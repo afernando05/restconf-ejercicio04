@@ -27,6 +27,7 @@ def test_is_subset():
     assert is_subset({"a": 1}, {"a": 1, "b": 2})
     assert not is_subset({"a": 1}, {"a": 2})
 
+
 def test_respuesta_lista_restconf():
     deseado = {
         "Cisco-IOS-XE-native:Loopback": {
