@@ -1,0 +1,13 @@
+---
+# Fase PLAN/CODE: toda la configuración deseada vive aquí
+host: 10.10.20.48   # verifica en tu ficha del sandbox
+port: 443
+loopback:
+  id: 201            # usa un número único si el sandbox es compartido
+  description: MGMT-LOOPBACK-DEVOPS
+  ip: 10.201.201.1
+  mask: 255.255.255.255
+snmp:
+  community: DEVOPS-RO
+  location: Lab-DevNet
+  contact: equipo@ejemplo.com
