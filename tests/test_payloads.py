@@ -26,3 +26,22 @@ def test_loopback_ip_en_payload():
 def test_is_subset():
     assert is_subset({"a": 1}, {"a": 1, "b": 2})
     assert not is_subset({"a": 1}, {"a": 2})
+
+
+def test_respuesta_lista_restconf():
+    deseado = {
+        "Cisco-IOS-XE-native:Loopback": {
+            "name": 201
+        }
+    }
+
+    actual = {
+        "Cisco-IOS-XE-native:Loopback": [
+            {
+                "name": 201,
+                "description": "MGMT-LOOPBACK-DEVOPS"
+            }
+        ]
+    }
+
+    assert is_subset(deseado, actual)

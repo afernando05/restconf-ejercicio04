@@ -30,7 +30,6 @@ def build_items(cfg):
     ]
 
 
-
 def is_subset(desired, current):
     """Comprueba si la configuración deseada existe en la actual."""
 
@@ -54,4 +53,3 @@ def is_subset(desired, current):
         )
 
     return str(desired) == str(current)
-
