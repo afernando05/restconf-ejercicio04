@@ -30,11 +30,28 @@ def build_items(cfg):
     ]
 
 
+
 def is_subset(desired, current):
-    """True si todo lo deseado ya existe en la configuración actual."""
+    """Comprueba si la configuración deseada existe en la actual."""
+
+    if isinstance(current, list) and isinstance(desired, dict):
+        return any(is_subset(desired, item) for item in current)
+
     if isinstance(desired, dict):
         return isinstance(current, dict) and all(
-            k in current and is_subset(v, current[k]) for k, v in desired.items())
+            k in current and is_subset(v, current[k])
+            for k, v in desired.items()
+        )
+
     if isinstance(desired, list):
-        return isinstance(current, list) and len(desired) == len(current)
+        return (
+            isinstance(current, list)
+            and len(desired) == len(current)
+            and all(
+                is_subset(d, c)
+                for d, c in zip(desired, current)
+            )
+        )
+
     return str(desired) == str(current)
+
